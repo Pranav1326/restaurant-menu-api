@@ -1,6 +1,8 @@
 const router = require('express').Router();
-const itemController = require('../controllers/item');
 const multer = require('multer');
+
+const itemController = require('../controllers/item');
+const auth = require('../utils/auth');
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -17,6 +19,6 @@ router.get('/', itemController.getItems);
 
 router.post('/add', upload.single('image'), itemController.createItem);
 
-router.delete('/delete', itemController.deleteItem);
+router.delete('/delete', auth, itemController.deleteItem);
 
 module.exports = router;

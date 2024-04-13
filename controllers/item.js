@@ -11,7 +11,7 @@ exports.getItems = async (req, res) => {
 
 exports.createItem = async (req, res) => {
     try{
-        const item = await Item.findOne({ name: req.body.item});
+        const item = await Item.findOne({ name: req.body.item });
         item && res.status(409).json("Item already exists!");
 
         const newItem = new Item({

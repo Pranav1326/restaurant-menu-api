@@ -22,6 +22,7 @@ exports.createCategory = async (req, res) => {
 exports.deleteCategory = async (req, res) => {
     try {
         const category = await Category.findOneAndDelete({ name: req.body.category });
+        !category && res.status(404).json("Category doesn't exist!");
         category &&  res.status(201).json(`category ${category.name} deleted!`);
     } catch (error) {
         res.status(500).json({ error });
