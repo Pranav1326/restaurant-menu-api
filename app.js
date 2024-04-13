@@ -7,6 +7,8 @@ const port = process.env.port || 6070;
 app.use(cors());
 app.use(express.json());
 
+const db = require('./utils/db');
+
 const userRoute = require('./routes/user');
 
 app.use('/api/user', userRoute);
