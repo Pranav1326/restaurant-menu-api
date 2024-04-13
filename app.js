@@ -10,8 +10,12 @@ app.use(express.json());
 const db = require('./utils/db');
 
 const userRoute = require('./routes/user');
+const categoryRoute = require('./routes/category');
+const itemRoute = require('./routes/item');
 
 app.use('/api/user', userRoute);
+app.use('/api/category', categoryRoute);
+app.use('/api/item', itemRoute);
 
 app.listen(port, () => {
     console.log(`Server started on port: ${port}`);
