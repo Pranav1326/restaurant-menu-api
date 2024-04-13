@@ -6,6 +6,8 @@ const port = process.env.port || 7080;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
+app.use('/api/images', express.static('public/images'));
 
 const db = require('./utils/db');
 
